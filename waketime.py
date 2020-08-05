@@ -1,4 +1,4 @@
-# WakeTime App v0.1 - AUG 2020 by D.Leicht
+# WakeTime App v1.0 - AUG 2020 by D.Leicht
 # https://github.com/dleicht/waketime
 
 import rumps, subprocess
@@ -49,26 +49,32 @@ class WakeTimeApp(rumps.App):
         self.menu.add(self.about_menuitem)
     
         def update_datestrings():
-            print("Updating datestrings...")    
-            datestrings = get_datestrings()
-            if (datestrings['CurrentTime'] - datestrings['LatestStart']) < (datestrings['CurrentTime'] - datestrings['LatestWake']):
-                self.lateststart_menuitem.title = str((datestrings['CurrentTime'] - datestrings['LatestStart']))
-                self.latestwake_menuitem.title = "No wake so far!"
-                if self.icontoggle_menuitem.state != 1:
-                    self.title = str((datestrings['CurrentTime'] - datestrings['LatestStart']))
-                    self.icon = None
+            print("Updating datestrings...")
+            try:    
+                datestrings = get_datestrings()
+                if (datestrings['CurrentTime'] - datestrings['LatestStart']) < (datestrings['CurrentTime'] - datestrings['LatestWake']):
+                    self.lateststart_menuitem.title = str((datestrings['CurrentTime'] - datestrings['LatestStart']))
+                    self.latestwake_menuitem.title = "No wake so far!"
+                    if self.icontoggle_menuitem.state != 1:
+                        self.title = str((datestrings['CurrentTime'] - datestrings['LatestStart']))
+                        self.icon = None
+                    else:
+                        self.title = None
+                        self.icon = 'timer.png'
                 else:
-                    self.title = None
-                    self.icon = 'timer.png'
-            else:
-                self.lateststart_menuitem.title = str((datestrings['CurrentTime'] - datestrings['LatestStart']))
-                self.latestwake_menuitem.title = str((datestrings['CurrentTime'] - datestrings['LatestWake']))
-                if self.icontoggle_menuitem.state != 1:
-                    self.title = str((datestrings['CurrentTime'] - datestrings['LatestWake']))
-                    self.icon = None
-                else:
-                    self.title = None
-                    self.icon = 'timer.png'
+                    self.lateststart_menuitem.title = str((datestrings['CurrentTime'] - datestrings['LatestStart']))
+                    self.latestwake_menuitem.title = str((datestrings['CurrentTime'] - datestrings['LatestWake']))
+                    if self.icontoggle_menuitem.state != 1:
+                        self.title = str((datestrings['CurrentTime'] - datestrings['LatestWake']))
+                        self.icon = None
+                    else:
+                        self.title = None
+                        self.icon = 'timer.png'
+            except Exception as e:
+                self.lateststart_menuitem.title = str(e)
+                self.latestwake_menuitem.title = str(e)
+                self.title = 'Err'
+                self.icon = None
     
         update_datestrings()
 
@@ -79,7 +85,7 @@ class WakeTimeApp(rumps.App):
 
         @rumps.clicked("About")
         def about(sender):
-            rumps.alert(title='WakeTime App', message='Version 0.1 - AUG 2020 by D. Leicht\nhttps://github.com/dleicht/waketime\n\nTracking uptime and waketime\nlike there is no tomorrow!\n\nLicensed under MIT.\nFramework7 icons licensed under MIT.', ok=None, cancel=None)
+            rumps.alert(title='WakeTime App', message='Version 1.0 - AUG 2020 by D. Leicht\nhttps://github.com/dleicht/waketime\n\nTracking uptime and waketime\nlike there is no tomorrow!\n\nLicensed under MIT.\nFramework7 icons licensed under MIT.', ok=None, cancel=None)
 
         @rumps.timer(60)  # create a new thread that calls the decorated function every 60 seconds
         def a(sender):
