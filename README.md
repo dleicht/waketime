@@ -1,5 +1,5 @@
 # WakeTime App
-Tracking uptime and waketime on macOS.
+Tracking uptime and waketime on macOS. Every 60 Seconds. In your statusbar.
 
 ![Screen 1](https://raw.githubusercontent.com/dleicht/waketime/master/screen1.png)
 ![Screen 2](https://raw.githubusercontent.com/dleicht/waketime/master/screen2.png)
@@ -11,4 +11,9 @@ I need to keep track of the time spent working with my macbook. On a mobile devi
 ### How?
 This is a simple python app. It utilizes [rumps](https://github.com/jaredks/rumps) to function as a simple macOS statusbar app.
 As such it will display uptime and also waketime, if a wake event occured after boot.
-If you choose to toggle the app icon the actual uptime or waketime will be displayed directly in your status bar.
+If you choose to toggle the app icon the actual uptime or waketime will be displayed directly in your statusbar.
+
+### Next?
+In a next iteration i might sum up all waketimes after boot in order to calculate something like:
+- usagetime (time the system was up and i was actually using it)
+- sleeptime (time the system was up, but sleeping)
