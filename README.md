@@ -1,4 +1,4 @@
-# WakeTime App [![License: MIT](https://img.shields.io/badge/License-MIT-green.svg)](https://opensource.org/licenses/MIT) ![macOS: 11.0.1+](https://img.shields.io/badge/macOS-11.0.1%2B-green) ![Python: 3](https://img.shields.io/badge/Python-3-green)
+# WakeTime App [![License: MIT](https://img.shields.io/badge/License-MIT-green.svg)](https://opensource.org/licenses/MIT) ![macOS: 10.14+](https://img.shields.io/badge/macOS-10.14%2B-green) ![Python: 3](https://img.shields.io/badge/Python-3-green)
 Tracking uptime and waketime on macOS. Every 60 Seconds. In your statusbar.
 
 ![Screen 1](https://raw.githubusercontent.com/dleicht/waketime/master/screen1.png)
